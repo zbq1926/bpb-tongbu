@@ -43,12 +43,12 @@ jobs:
             echo "need_update=true" >> $GITHUB_ENV
           fi
 
-      - name: 下载并替换 _worker.js
+      - name: 下载并替换 _worker1.js
         if: env.need_update == 'true'
         run: |
           download_url="https://github.com/bia-pain-bache/BPB-Worker-Panel/releases/download/${{ env.latest_tag }}/worker.js"
           echo "下载文件: $download_url"
-          curl -L -o _worker.js "$download_url"
+          curl -L -o _worker1.js "$download_url"
           echo "${{ env.latest_tag }}" > version.txt
 
       - name: 提交更改
@@ -56,6 +56,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add _worker.js version.txt
-          git commit -m "Update _worker.js to version ${{ env.latest_tag }}"
+          git add _worker1.js version.txt
+          git commit -m "Update _worker1.js to version ${{ env.latest_tag }}"
           git push
