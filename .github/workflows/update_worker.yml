@@ -1,4 +1,4 @@
-name: Auto Update _worker.js
+name: Auto Update _worker1.js
 
 on:
   schedule:
