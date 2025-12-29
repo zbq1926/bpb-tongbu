@@ -58,16 +58,16 @@ jobs:
 
       - name: Obfuscate BPB worker js
         run: |
-          javascript-obfuscator origin.js --output _worker.js \
+          javascript-obfuscator origin.js --output 1_worker.js \
             --compact true \
             --identifier-names-generator hexadecimal \
             --string-array true \
             --string-array-threshold 0.5 \
             --simplify true
-          ls -l _worker.js
-          head -n 10 _worker.js
+          ls -l 1_worker.js
+          head -n 10 1_worker.js
           # Check file size (in bytes)
-          FILE_SIZE=$(stat -f %z _worker.js || stat -c %s _worker.js)
+          FILE_SIZE=$(stat -f %z 1_worker.js || stat -c %s 1_worker.js)
           echo "Output file size: $FILE_SIZE bytes"
           if [ "$FILE_SIZE" -gt 500000 ]; then
             echo "Warning: _worker1.js size exceeds 500KB, may cause Cloudflare CPU limit errors"
